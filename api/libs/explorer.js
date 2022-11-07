@@ -13,7 +13,7 @@ const {
 } = require('ethers')
 
 let config = {}
-const PROXY = 'http://127.0.0.1:31211'
+// const PROXY = 'http://127.0.0.1:31211'
 if (PROXY) {
   config = {
     agent: new Proxy(PROXY)
@@ -104,7 +104,7 @@ const getAllData = async (address) => {
   let page = 1
   let data = []
   while (true) {
-    console.log(`开始缓存第 ${page} 页`)
+    // console.log(`开始缓存第 ${page} 页`)
     const currentPageData = await getPageData(address, page)
     data = data.concat(currentPageData)
     if (currentPageData.length === 0) break
@@ -113,11 +113,11 @@ const getAllData = async (address) => {
   delete cachedData[`${address}-loading`]
   cachedData[address] = data
   cachedData[`${address}-time`] = new Date().getTime()
-  console.log(cachedData)
+  //   console.log(cachedData)
   fs.writeFileSync(CACHE_FILE, JSON.stringify(cachedData), {
     flag: 'w+'
   })
-  console.log('缓存完毕')
+  //   console.log('缓存完毕')
 }
 
 module.exports = async (req, res) => {

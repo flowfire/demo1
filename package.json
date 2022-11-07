@@ -17,7 +17,7 @@
     "upload": "npm run bundle && blocklet upload .blocklet/release/blocklet.json",
     "prepare": "husky install",
     "bump-version": "zx scripts/bump-version.mjs",
-    "test": "mocha api/libs/explorer"
+    "test": "mocha api/libs/explorer.test"
   },
   "lint-staged": {
     "*.{mjs,js,jsx,ts,tsx}": [
